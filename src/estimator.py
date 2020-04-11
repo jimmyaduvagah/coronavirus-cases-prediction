@@ -30,7 +30,7 @@ def estimator(data):
         return int(cases * 0.15)
 
     def get_hospital_beds(estimate_type="impact"):
-        available_beds = int(data["totalHospitalBeds"] * 0.35)
+        available_beds = data["totalHospitalBeds"] * 0.35
         return available_beds - get_severe_cases(estimate_type)
 
     def get_icu_cases(estimate_type="impact"):
