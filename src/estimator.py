@@ -26,8 +26,6 @@ def estimator(data):
     severe_cases = get_infections_cases("severe")
 
     def get_severe_cases(estimate_type="impact"):
-        import pdb
-        pdb.set_trace()
         cases = convid_cases if estimate_type == "impact" else severe_cases
         return round((cases * 0.15), 2)
 
