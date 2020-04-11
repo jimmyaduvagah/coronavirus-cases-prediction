@@ -26,25 +26,28 @@ def estimator(data):
     severe_cases = get_infections_cases("severe")
 
     def get_severe_cases(estimate_type="impact"):
+        import pdb
+        pdb.set_trace()
         cases = convid_cases if estimate_type == "impact" else severe_cases
-        return cases * 0.15
+        return round((cases * 0.15), 2)
 
     def get_hospital_beds(estimate_type="impact"):
         available_beds = data["totalHospitalBeds"] * 0.35
+        available_beds = round(available_beds, 2)
         return available_beds - get_severe_cases(estimate_type)
 
     def get_icu_cases(estimate_type="impact"):
         cases = convid_cases if estimate_type == "impact" else severe_cases
-        return 0.05 * cases
+        return round((0.05 * cases), 2)
 
     def get_ventilators_cases(estimate_type="impact"):
         cases = convid_cases if estimate_type == "impact" else severe_cases
-        return 0.02 * cases
+        return round((0.02 * cases), 2)
 
     def get_dollars_in_flight(estimate_type="impact"):
         avg_income = data["region"]["avgDailyIncomeInUSD"]
         cases = convid_cases if estimate_type == "impact" else severe_cases
-        return cases * 0.65 * avg_income * get_days()
+        return round((cases * 0.65 * avg_income * get_days()), 2)
 
     data_to_return = {
         "data": data,
