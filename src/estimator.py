@@ -35,17 +35,16 @@ def estimator(data):
         return int(available_beds - (cases * 0.15))
 
     def get_icu_cases(estimate_type="impact"):
-        cases = get_severe_cases(estimate_type)
+        cases = convid_cases if estimate_type == "impact" else severe_cases
         return int(0.05 * cases)
 
     def get_ventilators_cases(estimate_type="impact"):
-        cases = get_severe_cases(estimate_type)
+        cases = convid_cases if estimate_type == "impact" else severe_cases
         return int(0.02 * cases)
 
     def get_dollars_in_flight(estimate_type="impact"):
         cases = convid_cases if estimate_type == "impact" else severe_cases
-        avg_income = data["region"]["avgDailyIncomeInUSD"]
-        return int((cases * 0.65 * avg_income) / 30)
+        return int((cases * 0.65 * 1.5) / 30)
 
     data_to_return = {
         "data": data,
