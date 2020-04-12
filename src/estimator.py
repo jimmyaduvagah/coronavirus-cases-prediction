@@ -43,7 +43,7 @@ def estimator(data):
         return int(0.02 * cases)
 
     def get_dollars_in_flight(estimate_type="impact"):
-        avg_income = 1.5
+        avg_income = data["region"]["avgDailyIncomeInUSD"]
         cases = convid_cases if estimate_type == "impact" else severe_cases
         return int((cases * 0.65 * avg_income) / 30)
 
