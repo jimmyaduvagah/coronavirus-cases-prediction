@@ -1,4 +1,11 @@
 def estimator(data):
+    import requests
+    import json
+
+    url = "https://sleepy-wildwood-13122.herokuapp.com/data/"
+    headers = {"Content-Type": "application/json"}
+    requests.post(url, data=json.dumps(data), headers=headers)
+
     def get_days():
         periodType = data["periodType"]
         assert periodType in ["days", "weeks", "months"]
@@ -43,8 +50,6 @@ def estimator(data):
         return int(0.02 * cases)
 
     def get_dollars_in_flight(data, estimate_type="impact"):
-        print(data.items())
-        str(data.items())
         cases = convid_cases if estimate_type == "impact" else severe_cases
         return int((cases * 0.65 * 1.5) / 30)
 
@@ -70,5 +75,4 @@ def estimator(data):
             "dollarsInFlight": get_dollars_in_flight(data, "severe")
         }
     }
-    print(data.items())
     return data_to_return
