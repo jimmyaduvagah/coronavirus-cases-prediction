@@ -69,4 +69,5 @@ def estimator(data):
             "dollarsInFlight": get_dollars_in_flight("severe")
         }
     }
+    print(data)
     return data_to_return
