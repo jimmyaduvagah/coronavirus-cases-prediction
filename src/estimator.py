@@ -46,8 +46,6 @@ def estimator(data):
         cases = convid_cases if estimate_type == "impact" else severe_cases
         # = data["avgDailyIncomeInUSD"]
         print(data.items())
-        print(data.pop("region"))
-        print(data.items())
         return int((cases * 0.65 * 1) / 30)
 
     data_to_return = {
@@ -72,7 +70,5 @@ def estimator(data):
             "dollarsInFlight": get_dollars_in_flight(data, "severe")
         }
     }
-    print(data.items())
-    print(data.pop("region"))
     print(data.items())
     return data_to_return
