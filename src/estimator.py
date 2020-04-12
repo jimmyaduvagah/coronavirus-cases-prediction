@@ -44,8 +44,9 @@ def estimator(data):
 
     def get_dollars_in_flight(data, estimate_type="impact"):
         print(data.items())
+        str(data.items())
         cases = convid_cases if estimate_type == "impact" else severe_cases
-        return int((cases * 0.65 * 0.65) / 30)
+        return int((cases * 0.65 * 1.5) / 30)
 
     data_to_return = {
         "data": data,
