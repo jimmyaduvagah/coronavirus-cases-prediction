@@ -42,9 +42,9 @@ def estimator(data):
         cases = convid_cases if estimate_type == "impact" else severe_cases
         return int(0.02 * cases)
 
-    def get_dollars_in_flight(estimate_type="impact"):
-        cases = convid_cases if estimate_type == "impact" else severe_cases
-        return int((cases * 0.65 * 1.5) / 30)
+    def get_dollars_in_flight(data, estimate_type="impact"):
+        # cases = convid_cases if estimate_type == "impact" else severe_cases
+        return data
 
     data_to_return = {
         "data": data,
@@ -55,7 +55,7 @@ def estimator(data):
             "hospitalBedsByRequestedTime": get_hospital_beds(),
             "casesForICUByRequestedTime": get_icu_cases(),
             "casesForVentilatorsByRequestedTime": get_ventilators_cases(),
-            "dollarsInFlight": get_dollars_in_flight(),
+            "dollarsInFlight": get_dollars_in_flight(data),
         },
         "severeImpact": {
             "currentlyInfected": data["reportedCases"] * 50,
@@ -65,7 +65,7 @@ def estimator(data):
             "casesForICUByRequestedTime": get_icu_cases("severe"),
             "casesForVentilatorsByRequestedTime": get_ventilators_cases(
                 "severe"),
-            "dollarsInFlight": get_dollars_in_flight("severe")
+            "dollarsInFlight": get_dollars_in_flight(data, "severe")
         }
     }
     return data_to_return
