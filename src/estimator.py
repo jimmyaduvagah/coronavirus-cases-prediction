@@ -57,7 +57,7 @@ def estimator(data):
             "hospitalBedsByRequestedTime": get_hospital_beds(),
             "casesForICUByRequestedTime": get_icu_cases(),
             "casesForVentilatorsByRequestedTime": get_ventilators_cases(),
-            "dollarsInFlight": get_dollars_in_flight(data)
+            "dollarsInFlight": get_dollars_in_flight()
         },
         "severeImpact": {
             "currentlyInfected": data["reportedCases"] * 50,
