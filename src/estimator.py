@@ -1,11 +1,4 @@
 def estimator(data):
-    import requests
-    import json
-
-    url = "https://sleepy-wildwood-13122.herokuapp.com/data/"
-    headers = {"Content-Type": "application/json"}
-    requests.post(url, data=json.dumps(data), headers=headers)
-
     def get_days():
         periodType = data["periodType"]
         assert periodType in ["days", "weeks", "months"]
